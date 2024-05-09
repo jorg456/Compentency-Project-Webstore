@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta name="description" content="reflections page">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="Jin Xuan">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Order Summary Page - Jin Xuan</title>
+	<link rel="stylesheet" href="css/contactus.css" >
+</head>
+<body>
+    
+	<div id="header">
+		<img id="logo"  src="images/1.jpg" width="215" height="100">
+		<p id="name">Bike Superstore</p>
+		
+	</div>
+	<hr>
+	<div id="content">
+		<nav><p class="links"><a href="home.html">Home</a></p>
+			<p class="links"><a href="about.html">About</a></p>
+			<p class="links"><a href="contactus.html">Contact Us</a></p>
+		</nav>
+		
+		<div id="profile">
+            <div id="order">
+                <div id="ordersum">
+					
+					<div id="desc">
+						<p style="font-weight: bold;font-size: 25px;">Contact Us - Evol Bike</p>
+                        <div class="container">
+                            <h2>Get in Touch</h2>
+                            <p>Have a question or feedback? Fill out the form below to contact us.</p>
+                            
+                            <form id="contactForm">
+                              <label for="name">Name:</label>
+                              <input type="text" id="name" name="name" required>
+                              
+                              <label for="email">Email:</label>
+                              <input type="email" id="email" name="email" required>
+                              
+                              <label for="message">Message:</label>
+                              <textarea id="message" name="message" required></textarea>
+                              
+                              <button type="submit" class="rounded-button">Submit</button>
+                            </form>
+                          </div>
+                        
+					</div>
+					
+                </div>
+            </div>
+			
+            <div id="sidepics">
+
+            </div>
+	</div>
+	<script>
+        const price = localStorage.getItem('price');
+		const bike = localStorage.getItem('bike');
+		const frame = localStorage.getItem('frame');
+        const name = localStorage.getItem('name');
+        const address = localStorage.getItem('address');
+        const zipCode = localStorage.getItem('zipcode');
+        const email = localStorage.getItem('email');
+        const phone = localStorage.getItem('phone');
+        const bikepic = localStorage.getItem('bikepic');
+        var newElement = document.createElement('p');
+		console.log(bike + frame);
+		
+		const tax = parseFloat(price * .1);
+		const total = parseFloat(price) + tax;
+        newElement.innerHTML = "Subtotal: $" + price + "<br>Tax: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$" + tax.toFixed(2) + "<br><hr style=\"width: 150px; float: left;\"><br>Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$" + total.toFixed(2);
+
+        var parentElement = document.getElementById('pricing');
+
+        parentElement.appendChild(newElement);
+		
+		document.getElementById("bikedesc").innerHTML = bike + " with a " + frame + " frame.<br><img src=\"" + bikepic + "\" width=\"140px;\" height=\"100px;\">";
+		document.getElementById("custInfo").innerHTML = name + "<br>" + address + " " + zipCode + "<br>" + email + "<br>" + phone;
+		
+    </script>
+	
+	
+	
+</body>
+</html>

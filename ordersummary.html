@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta name="description" content="reflections page">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="Jin Xuan">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Order Summary Page - Jin Xuan</title>
+	<link rel="stylesheet" href="css/ordersummary.css" >
+</head>
+<body>
+    
+	<div id="header">
+		<img id="logo"  src="images/1.jpg" width="215" height="100">
+		<p id="name">Bike Superstore</p>
+		
+	</div>
+	<hr>
+	<div id="content">
+		<nav><p class="links"><a href="home.html">Home</a></p>
+			<p class="links"><a href="about.html">About</a></p>
+			<p class="links"><a href="contactus.html">Contact Us</a></p>
+		</nav>
+		
+		<div id="profile">
+            <div id="order">
+                <div id="ordersum">
+					
+					<div id="desc">
+						<p style="font-weight: bold;font-size: 25px;">Thank you for ordering from Evol Bikes</p>
+                        <p id="date">Your order will be delivered to: </p>
+                        <p id="custInfo" style="font-size: 17px;"></p>
+						<p id="bikedesc">
+							
+						</p>
+					</div>
+					<div id="pricing">
+                        <div style="font-weight: bold; font-size: 20px;">The final price for your order is:<div></div>
+					</div>
+                </div>
+            </div>
+			
+            <div id="sidepics">
+
+            </div>
+	</div>
+	<script>
+        const price = localStorage.getItem('price');
+		const bike = localStorage.getItem('bike');
+		const frame = localStorage.getItem('frame');
+        const name = localStorage.getItem('name');
+        const address = localStorage.getItem('address');
+        const zipCode = localStorage.getItem('zipcode');
+        const email = localStorage.getItem('email');
+        const phone = localStorage.getItem('phone');
+        const bikepic = localStorage.getItem('bikepic');
+        var newElement = document.createElement('p');
+		console.log(bike + frame);
+		
+		const tax = parseFloat(price * .1);
+		const total = parseFloat(price) + tax;
+        newElement.innerHTML = "Subtotal: $" + price + "<br>Tax: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$" + tax.toFixed(2) + "<br><hr style=\"width: 150px; float: left;\"><br>Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$" + total.toFixed(2);
+
+        var parentElement = document.getElementById('pricing');
+
+        parentElement.appendChild(newElement);
+		
+		document.getElementById("bikedesc").innerHTML = bike + " with a " + frame + " frame.<br><img src=\"" + bikepic + "\" width=\"140px;\" height=\"100px;\">";
+		document.getElementById("custInfo").innerHTML = name + "<br>" + address + " " + zipCode + "<br>" + email + "<br>" + phone;
+		
+        const currentDate = new Date();
+        const sevenDaysFromNow = new Date(currentDate);
+        sevenDaysFromNow.setDate(currentDate.getDate() + 7);
+        
+        // Format the date as a string (e.g., "yyyy-mm-dd")
+        const formattedDate = sevenDaysFromNow.toISOString().split('T')[0];
+        
+        // Display the formatted date in HTML
+        document.getElementById('date').innerHTML += '<br>Estimated day of arrival: ' + formattedDate;
+    </script>
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+#header{
+    width: 100%;
+    font-weight: bold;
+    height:100px;
+    /* padding: 40px; */
+}   
+#name{
+    float:left;
+    font-size: 30px;
+    
+    padding-top:35px;
+    margin:20px;
+    width:35%;
+
+}
+#logo{
+    float:left;
+}
+nav{
+    background-color:  lightgray;
+    width:100px;
+    height: 550px;
+
+}
+#content{
+    display:inline-flex;
+    margin:15px;
+}
+.links{
+    /* margin:10px; */
+    color: black; /* Default color */
+    text-decoration: none;
+    text-align: center;
+    font: 20px;
+    
+    /* border: solid 2px black; */
+    /* border-radius: 7px; */
+}
+a{
+    color: black; /* Default color */
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+body{
+    background-image: url(images/Background-opera-speeddials-community-web-simple-backgrounds.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+hr{
+    width:100%;
+}
+#profile{
+    width: 70%;
+    margin-left: 20px;
+    /* display: inline-block; */
+}
+.intro{
+    margin-top: 50px;
+    display: inline-flex;
+}
+#ordersum{
+    font-size: 20px;
+    display: inline-flex;;
+    width: 900px;
+    height: 150px;
+    background-color: lightsalmon;
+}
+#custinfo{
+    
+    margin-top: 10px;
+    width:900px;
+    height: 382px;
+    background-color: lightsalmon;
+
+}
+#formtitle{
+    padding: 30px;
+}
+#userForm{
+    padding-left: 10px;
+    padding-left: 30px;
+}
+#desc{
+    padding-left: 50px;
+    padding-top: 10px;;
+}
+#pricing{
+    float:right;
+    text-align: right;
+    padding-left: 200px;
+    padding-top:25px;
+    
+}
+.rounded-button {
+    background-color: black; /* Background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 20px; /* Rounded corners */
+    padding: 10px 20px; /* Padding */
+    cursor: pointer; /* Cursor style */
+}
+
+/* Hover effect */
+.rounded-button:hover {
+    background-color: #333; /* Darker background color on hover */
+}
+
+
+

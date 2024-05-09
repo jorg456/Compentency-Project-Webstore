@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta name="description" content="reflections page">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="Jin Xuan">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Customer Info Page - Jin Xuan</title>
+	<link rel="stylesheet" href="css/custInfo.css" >
+</head>
+<body>
+    
+	<div id="header">
+		<img id="logo"  src="images/1.jpg" width="215" height="100">
+		<p id="name">Bike Superstore</p>
+		
+	</div>
+	<hr>
+	<div id="content">
+		<nav><p class="links"><a href="home.html">Home</a></p>
+			<p class="links"><a href="about.html">About</a></p>
+			<p class="links"><a href="contactus.html">Contact Us</a></p>
+		</nav>
+		
+		<div id="profile">
+            <div id="order">
+                <div id="ordersum">
+					
+					<div id="desc">
+						<p style="font-weight: bold;">Order Summary</p>
+						<p id="bikedesc">
+							
+						</p>
+					</div>
+					<div id="pricing">
+
+					</div>
+                </div>
+
+                <div id="custinfo">
+						<p id="formtitle">
+                            Delivery Info
+                        </p>
+						<form id="userForm" action="ordersummary.html">
+							<div>
+							  <label for="firstName">First Name:</label>
+							  <input type="text" id="firstName" name="firstName" >
+							  <span class="error" id="firstNameError"></span>
+							</div>
+							<div>
+							  <label for="lastName">Last Name:</label>
+							  <input type="text" id="lastName" name="lastName" >
+							  <span class="error" id="lastNameError"></span>
+							</div>
+							<div>
+							  <label for="address">Address:</label>
+							  <input type="text" id="address" name="address" >
+							  <span class="error" id="addressError"></span>
+							</div>
+							<div>
+							  <label for="aptNumber">Apt #:</label>
+							  <input type="text" id="aptNumber" name="aptNumber">
+							</div>
+							<div>
+							  <label for="city">City:</label>
+							  <input type="text" id="city" name="city" >
+							  <span class="error" id="cityError"></span>
+							</div>
+							<div>
+							  <label for="state">State:</label>
+							  <input type="text" id="state" name="state" >
+							  <span class="error" id="stateError"></span>
+							</div>
+							<div>
+							  <label for="zipCode">Zip Code:</label>
+							  <input type="text" id="zipCode" name="zipCode" >
+							  <span class="error" id="zipCodeError"></span>
+							</div>
+							<div>
+							  <label for="email">Email:</label>
+							  <input type="email" id="email" name="email" >
+							  <span class="error" id="emailError"></span>
+							</div>
+							<div>
+							  <label for="phone">Phone Number:</label>
+							  <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" >
+							  <span class="error" id="phoneError"></span>
+							  <small>Format: 123-456-7890</small>
+							</div>
+							<button type="submit" class="rounded-button">Submit</button>
+						</form>
+                </div>
+            </div>
+			
+            <div id="sidepics">
+
+            </div>
+	</div>
+	<script>
+        const price = localStorage.getItem('price');
+		const bike = localStorage.getItem('bike');
+		const frame = localStorage.getItem('frame');
+        var newElement = document.createElement('p');
+		console.log(bike + frame);
+		
+		const tax = parseFloat(price * .1);
+		const total = parseFloat(price) + tax;
+        newElement.innerHTML = "Subtotal: $" + price + "<br>Tax: $" + tax.toFixed(2) + "<br>Total: $" + total.toFixed(2);
+
+        var parentElement = document.getElementById('pricing');
+
+        parentElement.appendChild(newElement);
+		
+		document.getElementById("bikedesc").innerHTML = bike + " with a " + frame + " frame.";
+		
+		document.getElementById('userForm').addEventListener('submit', function(event) {
+			// Prevent form submission
+			event.preventDefault();
+
+			// Validate form fields
+			const firstName = document.getElementById('firstName').value.trim();
+			const lastName = document.getElementById('lastName').value.trim();
+			const address = document.getElementById('address').value.trim();
+			const city = document.getElementById('city').value.trim();
+			const state = document.getElementById('state').value.trim();
+			const zipCode = document.getElementById('zipCode').value.trim();
+			const email = document.getElementById('email').value.trim();
+			const phone = document.getElementById('phone').value.trim();
+
+			let isValid = true;
+
+			// First Name validation
+			if (firstName === '') {
+				document.getElementById('firstNameError').textContent = 'First name is required';
+				isValid = false;
+			} else {
+				document.getElementById('firstNameError').textContent = '';
+			}
+
+			// Last Name validation
+			if (lastName === '') {
+				document.getElementById('lastNameError').textContent = 'Last name is required';
+				isValid = false;
+			} else {
+				document.getElementById('lastNameError').textContent = '';
+			}
+
+			// Address validation
+			if (address === '') {
+				document.getElementById('addressError').textContent = 'Address is required';
+				isValid = false;
+			} else {
+				document.getElementById('addressError').textContent = '';
+			}
+
+			// City validation
+			if (city === '') {
+				document.getElementById('cityError').textContent = 'City is required';
+				isValid = false;
+			} else {
+				document.getElementById('cityError').textContent = '';
+			}
+
+			// State validation
+			if (state === '') {
+				document.getElementById('stateError').textContent = 'State is required';
+				isValid = false;
+			} else {
+				document.getElementById('stateError').textContent = '';
+			}
+
+			// Zip Code validation
+			if (zipCode === '') {
+				document.getElementById('zipCodeError').textContent = 'Zip code is required';
+				isValid = false;
+			} else {
+				document.getElementById('zipCodeError').textContent = '';
+			}
+
+			// Email validation
+			if (email === '') {
+				document.getElementById('emailError').textContent = 'Email is required';
+				isValid = false;
+			} else {
+				// Regular expression for email format validation
+				const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				if (!emailPattern.test(email)) {
+				document.getElementById('emailError').textContent = 'Invalid email format';
+				isValid = false;
+				} else {
+				document.getElementById('emailError').textContent = '';
+				}
+			}
+
+			// Phone Number validation
+			if (phone === '') {
+				document.getElementById('phoneError').textContent = 'Phone number is required';
+				isValid = false;
+			} else {
+				// Regular expression for phone number format validation
+				const phonePattern = /^[0-9]{3}-[0-9]{3}-[0-9]{4}$/;
+				if (!phonePattern.test(phone)) {
+				document.getElementById('phoneError').textContent = 'Invalid phone number format';
+				isValid = false;
+				} else {
+				document.getElementById('phoneError').textContent = '';
+				}
+			}
+
+			// If the form is valid, you can proceed with form submission or further processing
+			if (isValid) {
+				// Form is valid, you can submit the form or perform other actions
+				localStorage.setItem('name', firstName + " " + lastName);
+				localStorage.setItem('address', address);
+				localStorage.setItem('zipcode', zipCode);
+				localStorage.setItem('email', email);
+				localStorage.setItem('phone', phone);
+				// For example: Submit the form programmatically
+				 document.getElementById('userForm').submit();
+				 window.location.href = this.action;
+			}
+			});
+    </script>
+	
+	
+	
+</body>
+</html>

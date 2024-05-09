@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+#header{
+    width: 100%;
+    font-weight: bold;
+    height:150px;
+    /* padding: 40px; */
+}   
+#name{
+    float:left;
+    font-size: 50px;
+    
+    padding-top:50px;
+    margin:20px;
+    width:35%;
+    
+
+}
+nav{
+    background-color:  lightgray;
+    width:10%;
+    height: 500px;
+
+}
+#content{
+    display:inline-flex;
+    margin:15px;
+}
+.links{
+    /* margin:10px; */
+    color: black; /* Default color */
+    text-decoration: none;
+    text-align: center;
+    font: 20px;
+    
+    /* border: solid 2px black; */
+    /* border-radius: 7px; */
+}
+a{
+    color: black; /* Default color */
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+body{
+    background-image: url(images/Background-opera-speeddials-community-web-simple-backgrounds.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+hr{
+    width:100%;
+}
+#profile{
+    width: 70%;
+    margin-left: 20px;
+    /* display: inline-block; */
+}
+.intro{
+    margin-top: 50px;
+    display: inline-flex;
+}
+img{
+    float: left;
+}
+
+.aboutme{
+    text-align: left;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta name="description" content="reflections page">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="Jin Xuan">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Order Page - Jin Xuan</title>
+	<link rel="stylesheet" href="css/order.css" >
+</head>
+<body>
+    
+	<div id="header">
+		<img id="logo"  src="images/1.jpg" width="215" height="100">
+		<p id="name">Bike Superstore</p>
+		
+	</div>
+	<hr>
+	<div id="content">
+		<nav><p class="links"><a href="home.html">Home</a></p>
+			<p class="links"><a href="about.html">About</a></p>
+			<p class="links"><a href="contactus.html">Contact Us</a></p>
+		</nav>
+		
+		<div id="profile">
+			
+			<div class="intro">
+				<div class="bikes"><img src="images/e23226c97355b0ce134d55782baca1f2.png" width="275" height="150"></div>
+				<div class="bikes"><img src="images//trek-fuel-ex-98-gx-axs-t-type-gen-6-2024-557335-3482388-1-ezgif.com-webp-to-jpg-converter.png" width="275" height="150"></div>
+				<div class="bikes"><img src="images/istockphoto-1337990644-612x612.png" width="275" height="150"></div>
+				
+			</div>
+			<form onsubmit="storeData()" action="custInfo.html">
+				<div id="biketype">
+					<input type="radio" class="bikeoption" id="option1" onclick="selectBike()" name="options" value="City Bike">
+					<label for="option1" >City Bike</label><br>
+					<input type="radio" class="bikeoption" id="option2" onclick="selectBike()" name="options" value="Mountain Bike">
+					<label for="option2" >Mountain Bike</label><br>
+					<input type="radio" class="bikeoption" id="option3" onclick="selectBike()" name="options" value="Road Bike">
+					<label for="option3" >Road Bike</label><br>
+				</div>
+				<div id="frametype">
+					<p style="font-weight: bold;">Please Select Frame Material</p>
+					<input type="radio" id="option4"  name="frameoption" onclick="selectBike()" value="Aluminum">
+					<label for="option4" >Aluminum (Base)</label><br>
+					<input type="radio" id="option5"  name="frameoption" onclick="selectBike()" value="Carbon fiber">
+					<label for="option5" >Carbon fiber (Premium)</label><br><br>
+				</div>
+                
+				<button type="submit" class="rounded-button">Submit</button>
+            </form>
+		</div>
+        <div id="ordersum">
+            <p id="ordertitle">Order Summary</p>
+			<p id="selectedbike"></p>
+			<p id="price"></p>
+		</div>
+	</div>
+	<script>
+			var bike ;
+			var frame ;
+			var price = 0;
+			var bikepic;
+			var tax = 0;
+			var total = 0;
+		function selectBike() {
+			var selectedBike = document.querySelector('input[name="options"]:checked');
+			var selectedMat = document.querySelector('input[name="frameoption"]:checked');
+			
+
+			bike = selectedBike.value;
+			frame = selectedMat.value;
+			// var price = 0;
+			// var bikepic;
+			// var tax = 0;
+			// var total = 0;
+
+			if (bike === "City Bike") {
+				price = 499.99;
+				bikepic = "images/e23226c97355b0ce134d55782baca1f2.png";
+			} else if (bike === "Mountain Bike") {
+				price = 2999.99;
+				bikepic = "images//trek-fuel-ex-98-gx-axs-t-type-gen-6-2024-557335-3482388-1-ezgif.com-webp-to-jpg-converter.png";
+			} else if (bike === "Road Bike") {
+				price = 2499.99;
+				bikepic = "images/istockphoto-1337990644-612x612.png";
+			}
+
+			if (frame === "Aluminum") {
+				price += 100;
+			}else if(frame === "Carbon fiber"){
+				price += 500;
+			}
+			tax = price*.1;
+			total = price + tax;
+			document.getElementById("selectedbike").innerHTML = bike + " with a<br>" + frame + " frame<br><br>" + 
+		    "<img src=" + bikepic + " width=\"125px;\" height=\"75px;\" >";
+			document.getElementById("price").innerHTML = "Subtotal: $" + price.toFixed(2) + "<br><br>Tax: $" + tax.toFixed(2) + 
+			"<br><br>Total: $" + total.toFixed(2) + "<br><br>Personal Details will be <br>entered in the next page.";
+		}
+
+		function storeData() {
+			localStorage.setItem('bikepic', bikepic);
+			localStorage.setItem('price', price);
+			localStorage.setItem('bike', bike);
+			localStorage.setItem('frame', frame)
+		
+		}
+</script>
+
+    </script>
+	
+	
+	
+</body>
+</html>

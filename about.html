@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta name="description" content="reflections page">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="Jin Xuan">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>About Us Page - Jin Xuan</title>
+	<link rel="stylesheet" href="css/about.css" >
+</head>
+<body>
+    
+	<div id="header">
+		<img id="logo"  src="images/1.jpg" width="215" height="100">
+		<p id="name">Bike Superstore</p>
+		
+	</div>
+	<hr>
+	<div id="content">
+		<nav><p class="links"><a href="home.html">Home</a></p>
+			<p class="links"><a href="about.html">About</a></p>
+			<p class="links"><a href="contactus.html">Contact Us</a></p>
+		</nav>
+		
+		<div id="profile">
+            <div id="order">
+                <div id="ordersum">
+					
+					<div id="desc">
+						<p style="font-weight: bold;font-size: 25px;">"Experience bikes like no other."</p>
+                        <div class="container">
+							<h2>Our Story</h2>
+							<p>Welcome to Evol Bike, your one-stop destination for all things cycling! We are passionate about bikes and everything related to cycling. Whether you're a seasoned cyclist or just starting out, we've got something for you.</p>
+							<p>Our journey began in 2005 when our founder, John Smith, opened our first store in the heart of the city. Since then, we've grown into a trusted name in the cycling community, known for our quality products, exceptional service, and commitment to customer satisfaction.</p>
+						  
+							<h2>Our Mission</h2>
+							<p>At Evol Bike, our mission is simple: to provide cyclists of all levels with the best products, expert advice, and outstanding service. We believe that cycling is more than just a sport—it's a lifestyle. That's why we're dedicated to helping you enjoy every ride, whether you're commuting to work, exploring new trails, or racing competitively.</p>
+						  
+							<h2>Our Values</h2>
+							<ul>
+							  <li>Passion for Cycling: We love bikes, and we're here to share that passion with you.</li>
+							  <li>Customer Satisfaction: Your satisfaction is our top priority, and we'll go above and beyond to exceed your expectations.</li>
+							  <li>Integrity: We believe in honesty, transparency, and doing the right thing, always.</li>
+							  <li>Community: We're proud to be part of the cycling community and support local events and initiatives.</li>
+							</ul>
+						  
+							<h2>Contact Us</h2>
+							<p>If you have any questions, feedback, or just want to say hello, we'd love to hear from you! Feel free to contact us:</p>
+							<p>Email: info@bicyclestorecompany.com</p>
+							<p>Phone: 1-800-123-4567</p>
+						  </div>
+                        
+					</div>
+					
+                </div>
+            </div>
+			
+            <div id="sidepics">
+
+            </div>
+	</div>
+	<script>
+        const price = localStorage.getItem('price');
+		const bike = localStorage.getItem('bike');
+		const frame = localStorage.getItem('frame');
+        const name = localStorage.getItem('name');
+        const address = localStorage.getItem('address');
+        const zipCode = localStorage.getItem('zipcode');
+        const email = localStorage.getItem('email');
+        const phone = localStorage.getItem('phone');
+        const bikepic = localStorage.getItem('bikepic');
+        var newElement = document.createElement('p');
+		console.log(bike + frame);
+		
+		const tax = parseFloat(price * .1);
+		const total = parseFloat(price) + tax;
+        newElement.innerHTML = "Subtotal: $" + price + "<br>Tax: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$" + tax.toFixed(2) + "<br><hr style=\"width: 150px; float: left;\"><br>Total: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$" + total.toFixed(2);
+
+        var parentElement = document.getElementById('pricing');
+
+        parentElement.appendChild(newElement);
+		
+		document.getElementById("bikedesc").innerHTML = bike + " with a " + frame + " frame.<br><img src=\"" + bikepic + "\" width=\"140px;\" height=\"100px;\">";
+		document.getElementById("custInfo").innerHTML = name + "<br>" + address + " " + zipCode + "<br>" + email + "<br>" + phone;
+		
+    </script>
+	
+	
+	
+</body>
+</html>
